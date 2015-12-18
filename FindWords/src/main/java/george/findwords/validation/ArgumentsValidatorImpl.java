@@ -23,27 +23,35 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package george.findwords;
-
-import george.findwords.validation.Validator;
+package george.findwords.validation;
 
 /**
- *
+ * Validate command line arguments.
+ * 
+ * Command line arguments could be as following:
+ * <pre>
+ * <dl>
+ *  <dt>[filename]</dt>
+ *  <dd>An optional argument for an input file name. Text will be read from file. If argument is not passed text will be expected from the console to be entered by user.</dd>
+ *  <dt>[-o filename] </dt>
+ * </dl>
+ * </pre>
  * @author George Shumakov <george.shumakov@gmail.com>
  */
-public class ArgumentsValidator implements Validator {
+public class ArgumentsValidatorImpl implements ArgumentsValidator {
 
     private final String[] args;
     
-    public ArgumentsValidator(final String[] args) {
+    public ArgumentsValidatorImpl(final String[] args) {
         this.args = args;
     }
     
     @Override
     public boolean validate() {
         if (null == args || args.length < 1) {
-            System.exit(1);
+            throw new ValidationException("No arguments.");
         }
+        return false;
     }
     
 }

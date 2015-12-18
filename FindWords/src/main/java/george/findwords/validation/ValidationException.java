@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, George Shumakov <george.shumakov@gmail.com>
+ * Copyright (c) 2015, george
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,27 @@
 package george.findwords.validation;
 
 /**
- * Validation behaviour representer.
- * 
- * s
- * @author George Shumakov <george.shumakov@gmail.com>
+ * Main exception for a validation problem.
+ *
+ * @author george
  */
-public interface Validator {
-    
-    public boolean validate();
-    
+public class ValidationException
+        extends RuntimeException {
+
+    public ValidationException(String message) {
+        super(message);
+    }
+
+    public ValidationException() {
+        super();
+    }
+
+    public ValidationException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public ValidationException(Throwable cause) {
+        super(cause);
+    }
+
 }
